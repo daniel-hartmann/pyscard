@@ -72,6 +72,20 @@ elif 'macosx-10.6' in get_platform():
     platform_extra_link_args = ['-arch', 'i386', '-arch', 'x86_64', '-ggdb']
 
 #
+# Mac OS X Lion, python 2.7
+# changing "LEOPARD" to "LION" -- let's see if it works
+#
+
+elif 'macosx-10.8' in get_platform():
+    platform__cc_defines = [('PCSCLITE', '1'), ('__APPLE__', '1'), ('__LION__', '1')]
+    platform_swig_opts = ['-DPCSCLITE', '-D__APPLE__', '-D__LION__']
+    platform_sources = []
+    platform_libraries = []
+    platform_include_dirs = ['/usr/local/include', '/usr/local/include/PCSC']
+    platform_extra_compile_args = ['-v', '-arch', 'i686', '-arch', 'x86_64', '-ggdb']
+    platform_extra_link_args = ['-arch', 'i686', '-arch', 'x86_64', '-ggdb']
+
+#
 # Mac OS X Leopard has python 2.5 preinstalled
 # get_platform() returns a string similar to 'macosx-10.5-i386'
 #
