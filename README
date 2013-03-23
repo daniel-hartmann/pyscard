@@ -28,6 +28,16 @@ This fork by swgreen
 
 Trying to update to build with python2.7 and Mac OS X 10.8.
 
+Currently getting the error:
+smartcard/scard/winscarddll.h:300:13: error: unknown type name 'LPTSTR'
+    OUT     LPTSTR mszReaders,
+            ^
+Which I don't understand, because `winscarddll.h` has `#include 
+<PCSC/wintypes.h>` at line 30, and `PCSC/wintypes.h` has 
+`typedef LPSTR LPTSTR;` at line 80. 
+
+But maybe all of this 'win' crap shouldn't be trying to build on OS X at all...
+
 -------------------------------------------------------------------------------
 Last update : pyscard 1.6.12 (August 2010)
 -------------------------------------------------------------------------------
